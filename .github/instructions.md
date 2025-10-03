@@ -1,4 +1,4 @@
-# Copilot instructions for the Gemini-Summary extension
+# instructions for the Gemini-Summary extension for devs
 
 This repository is a small Chrome MV3 extension that extracts article text from web pages and sends it to Google's Gemini (Generative Language) API to create summaries. The guidance below highlights project-specific patterns, important files, and concrete examples to help an AI coding agent be productive.
 
@@ -37,7 +37,3 @@ Integration points to be aware of
 Small examples
 - Extract article text: `chrome.tabs.sendMessage(tab.id, { type: 'GET_ARTICLE_TEXT' }, callback)` (see `popup.js`).
 - Read API key: `chrome.storage.sync.get(['geminiApiKey'], cb)` (see `popup.js`, `options.js`).
-
-When editing, prefer small, isolated changes and run a quick manual smoke test in the browser. Ask for clarification if you need to change API behavior, auth, or content extraction strategy.
-
-If anything in this file is unclear or incomplete, tell me which area you want expanded (prompts, tests, error handling, or packaging) and I will update the guidance.
