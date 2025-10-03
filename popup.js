@@ -1,6 +1,37 @@
+// Initialize theme toggle on load
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (!themeToggle) return;
+  // Load saved themeMode (default to GS_CONFIG.defaults.themeMode)
+  chrome.storage.sync.get(['themeMode'], (res) => {
+    const mode = res.themeMode || window.GS_CONFIG.defaults.themeMode;
+    window.GS_CONFIG.applyThemeMode(mode);
+    themeToggle.checked = mode === 'light';
+  });
+
+  themeToggle.addEventListener('change', () => {
+    const mode = themeToggle.checked ? 'light' : 'dark';
+    window.GS_CONFIG.applyThemeMode(mode);
+    chrome.storage.sync.set({ themeMode: mode });
+  });
+});
+
+// Open options/settings in a new tab when the small gear button is clicked
+const openSettingsBtn = document.getElementById('open-settings');
+if(openSettingsBtn){
+  openSettingsBtn.addEventListener('click', () => {
+    if (chrome.runtime && chrome.runtime.openOptionsPage) {
+      chrome.runtime.openOptionsPage();
+    } else {
+      // fallback to opening options.html directly
+      window.open(chrome.runtime.getURL('options.html'));
+    }
+  });
+}
+
 document.getElementById("summarize").addEventListener("click", async () => {
   const resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = '<div class="loading"><div class="loader"></div></div>';
+  resultDiv.innerHTML = '<div class="loading"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
 
   const summaryType = document.getElementById("summary-type").value;
 
