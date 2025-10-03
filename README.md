@@ -24,4 +24,3 @@ Files of interest
 - `options.html` / `options.js` — API key and theme settings.
 - `background.js` — opens options on install if no API key set.
 
-If you'd like a CI check, prettier/ESLint, or packaging help (zip for distribution), tell me which you'd prefer and I can add it.
