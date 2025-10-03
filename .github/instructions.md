@@ -1,4 +1,4 @@
-# instructions for the Gemini-Summary extension for devs
+# Instructions for the Gemini-Summary extension for devs
 
 This repository is a small Chrome MV3 extension that extracts article text from web pages and sends it to Google's Gemini (Generative Language) API to create summaries. The guidance below highlights project-specific patterns, important files, and concrete examples to help an AI coding agent be productive.
 
